@@ -1,27 +1,30 @@
 \documentclass{article}
 
 	\usepackage[english]{babel}
+	\usepackage[T1]{fontenc}
 	\usepackage{xspace}
 	\usepackage{graphicx}
 	\usepackage{hyperref}
 
 	\newcommand{\latex}{\LaTeX\xspace}
 	\newcommand{\email}[1]{\texttt{#1}}
+	\newcommand{\icon}[2]{\includegraphics[scale=#2]{../resources/#1}\xspace}
 
 \begin{document}
 
 \title{
+	\icon{vscode_icon.png}{0.05}\\
 	A Guide to \latex Editing in Visual Studio Code\\
 	\large Written in \latex with Visual Studio Code
 }
 \author{
 	Dan Arad\\
-	\email{arda@bgu.ac.il}
+	\email{arda@post.bgu.ac.il}
 }
 \maketitle
 
-\section{Introduction}
-This guide's purpose is to help setup a comfortable and efficient editing of \latex documents using Visual Studio Code\footnotemark[1] (also known as VSCode). This also includes the ability to easily work with git version control, and keep generated files out of the way.\\
+\section{Introduction} \label{sec:introduction}
+This guide's purpose is to help setup a comfortable and efficient workspace of \latex documents using Visual Studio Code\footnotemark[1] (also known as VSCode). This also includes the ability to easily work with git version control, and keep generated files out of the way.\\
 VSCode is a free open source powerful light-weight editor developed and maintained by Microsoft. The editor boasts many extensions and built-in git support, and is widely used. Among its many extension, there is one called \emph{\latex Workshop}\footnotemark[2].\\
 To me VSCode is the first choice for editing any kind of code, and for that reason I chose to see how well it will preform as a \latex editor. I was not dissapointed with the result.
 
@@ -29,11 +32,12 @@ To me VSCode is the first choice for editing any kind of code, and for that reas
 \footnotetext[2]{Extension Site: https://marketplace.visualstudio.com/items?itemName=James-Yu.latex-workshop}
 \footnotetext[3]{The Guide: https://dev.to/nickymarino/lets-use-latex}
 
-\section{Basic Setup}
+
+\section{Basic Setup} \label{sec:basic_setup}
 For the basic setup of VSCode with \latex I used Nicky Marino's guide\footnotemark[3], and this entire section is based on it.\\
 At the conclusion of this basic setup, you will have everything you need to get going:
 \begin{itemize}
-	\item{Syntax highlighting for \latex}
+	\item{Syntax highlighting for \latex with basic auto-completion}
 	\item{Preview option that is updated either manualy, on save or on change of the document}
 	\item{An outline of your \latex document}
 	\item{Error and warning pane}
@@ -47,37 +51,39 @@ Figure \ref{fig:vscode_with_latex_highlights} displays the outcome and the diffe
 
 \subsection{\latex Compiler Installation}
 The first thing that is required is a compiler for \latex. The suggested compiler is \emph{TeX Live} for Windows and Linux, and \emph{MacTex} for MacOS.\\
-I can verify that the TeX Live worked flawlessly on my Windows 10, but be prepared - It's a very long installation.
+I can verify that the \emph{TeX Live} worked flawlessly on my Windows 10, but be prepared - It's a very long installation.
 
 \subsection{VScode and \latex Workshop Installation}
 If you don't have VSCode installed, install it from the official website\footnotemark[1].\\
-Then, in VSCode go to the extension marketplace by clicking the button marked in figure \ref{fig:vscode_marketplace}, or by using the shortcut Ctrl+Shift+X. Search for \latex Workshop, click install, and when finished, click reload.\\
-After the editor reloads, you should be able to use all the previously discussed functionalities.
-\begin{figure}
-	\includegraphics[width=\linewidth]{../resources/vscode_marketplace.png}
-	\caption{The marketplace is marked in red}
-	\label{fig:vscode_marketplace}
-\end{figure}
+Then, in VSCode go to the extension marketplace by clicking the \icon{extensions_icon.png}{0.4} button in the leftmost pane, or by using the shortcut \texttt{Ctrl+Shift+X}. Search for \latex Workshop, click install, and when finished, click reload.\\
+After the editor reloads, you should be able to use all of the previously discussed functionalities.
 
 
-\section{Additional Know-How}
+\section{Additional Know-How} \label{sec:additional_know_how}
 I will not go in depth explaining the features of VSCode, but I do find it important to talk about the issue of extension commands and settings.
 
 \subsection{Commands}
-In VSCode, each extension may define commands, that can be run by the user. To run a command use the Ctrl+Shift+p shortcut that opens context menu with all available commands. This is highlighted in figure \ref{fig:command_menu}.\\
-\latex Workshop defines several such commands. The most useful I found are \emph{LaTeX Workshop: Build LaTeX project}, which can also be activated using Ctrl+Alt+B, \emph{laTeX Workshop: Clean up auxiliary files} and \emph{LaTeX Workshop: View LaTeX PDF file in VSCode tab}, that can also be triggered by using the button indicated in figure \ref{fig:command_menu}.
+In VSCode, each extension may define commands that can be run by the user. To run a command use the \texttt{Ctrl+Shift+P} shortcut that opens a context menu with all available commands, as shown in figure \ref{fig:command_menu}.\\
+\latex Workshop defines several such commands. The most useful I found are \emph{LaTeX Workshop: Build LaTeX project}, which can also be activated using \texttt{Ctrl+Alt+B}, \emph{laTeX Workshop: Clean up auxiliary files} and \emph{LaTeX Workshop: View LaTeX PDF file in VSCode tab}, that can also be triggered by using the \icon{preview_icon.png}{0.5} button that is located in the tabs area.
 \begin{figure}
-	\includegraphics[width=\linewidth]{../resources/vscode_with_latex_highlights.png}
-	\caption{Green: Code Highlighting, Red: Preview, Blue: Outline, Yellow: Errors and Warnings}
+	\includegraphics[width=\linewidth]{../resources/command_menu.png}
+	\caption{The commands context menu}
 	\label{fig:command_menu}
 \end{figure}
 
 \subsection{Settings}
 Each extension also has its own settings that are controlled through the Settings window of VSCode. The settings are grouped by category, and each extension has its own group.\\
-To open the settings window go to File -> Preferences -> Settings, or use the Ctrl+, shortcut.
-\latex Workshop
+To open the settings window go to \texttt{File -> Preferences -> Settings}, or use the \texttt{Ctrl+,} shortcut.\\
+As can be seen in figure \ref{fig:settings_window}, The settings menu is split into two panes. The left pane shows all settings in their default values, while the right pane shows user (or workspace) settings that differ from the default.\\
+\latex Workshop has a lot of configuration options, but it will work just fine left untouched. We will discuss some changes to the configuration in section \ref{sec:seperating_sources_from_outputs}.
+\begin{figure}
+	\includegraphics[width=\linewidth]{../resources/settings_window.png}
+	\caption{The settings window with a view of the \latex Workshop settings}
+	\label{fig:settings_window}
+\end{figure}
 
-\section{Seperating Sources from Outputs}
-I was very pleased when I finished the installations and everything worked smoothly, but I did have one reservation. Every time there was a new build (which to me is configured to happen every )
+
+\section{Seperating Sources from Outputs} \label{sec:seperating_sources_from_outputs}
+
 
 \end{document}
