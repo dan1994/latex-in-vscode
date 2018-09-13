@@ -40,12 +40,13 @@ At the conclusion of this basic setup, you will have everything you need to get 
 	\item{An outline of your \latex document}
 	\item{Error and warning pane}
 \end{itemize}
-Figure \ref{fig:vscode_with_latex_highlights} displays the outcome and the different components.
+Figure \ref{fig:vscode_with_latex_highlights} displays the outcome and the different components.\\
 \begin{figure}
 	\includegraphics[width=\linewidth]{../resources/vscode_with_latex_highlights.png}
 	\caption{Green: Code Highlighting, Red: Preview, Blue: Outline, Yellow: Errors and Warnings}
 	\label{fig:vscode_with_latex_highlights}
 \end{figure}
+\textbf{Note:} As of version 5.9.0 of \latex Workshop, the layout has become part of the left pane displays, and can be accessed by pressing the \icon{tex_icon.png}{0.3} icon.
 
 \subsection{\latex Compiler Installation}
 The first thing that is required is a compiler for \latex. The suggested compiler is \href{https://www.tug.org/texlive/}{TeX Live} for Windows and Linux, and \href{https://www.tug.org/mactex/}{MacTex} for MacOS.\\
@@ -73,11 +74,17 @@ In VSCode, each extension may define commands that can be run by the user. To ru
 Each extension also has its own settings that are controlled through the settings window of VSCode. The settings are grouped by category, and each extension has its own group.\\
 To open the settings window go to \texttt{File -> Preferences -> Settings}, or use the \texttt{Ctrl+,} shortcut.\\
 As can be seen in figure \ref{fig:settings_window}, The settings menu is split into two panes. The left pane shows all settings in their default values, while the right pane shows user (or workspace) settings that differ from the default.\\
-\latex Workshop has a lot of configuration options, but it will work just fine left untouched. We will discuss some changes to the configuration in section \ref{sec:seperating_sources_from_outputs}.
+\latex Workshop has a lot of configuration options, but it will work just fine left untouched. We will discuss some changes to the configuration in section \ref{sec:seperating_sources_from_outputs}.\\
 \begin{figure}
 	\includegraphics[width=\linewidth]{../resources/settings_window.png}
 	\caption{The settings window with a view of the \latex Workshop settings}
 	\label{fig:settings_window}
+\end{figure}
+\textbf{Note:} As of version 1.27 of VSCode, the settings interface has been changed, and is now more graphic. In order to get to the json based preview, use the menu as displayed in figure \ref{fig:v1_27_settings}.
+\begin{figure}[h!]
+	\includegraphics[width=\linewidth]{../resources/v1_27_settings.png}
+	\caption{Getting to the old json based preview from the new settings menu}
+	\label{fig:v1_27_settings}
 \end{figure}
 
 
